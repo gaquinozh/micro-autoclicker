@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+
+<AnchorPane prefHeight="230.0" prefWidth="430.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.ClickController">
+	<children>
+		<Label layoutX="14.0" layoutY="14.0" text="Current Mouse Position">
+			<font>
+				<Font name="System Bold" size="13.0" />
+			</font>
+		</Label>
+		<Label layoutX="14.0" layoutY="44.0" text="x Position:" />
+		<TextField disable="true" editable="false" layoutX="89.0"
+			layoutY="39.0" prefHeight="26.0" prefWidth="115.0" fx:id="xPosLbl" />
+		<Label layoutX="230.0" layoutY="44.0" text="y Position:" />
+		<TextField fx:id="yPosLbl" disable="true" editable="false"
+			layoutX="305.0" layoutY="39.0" prefHeight="26.0" prefWidth="115.0" />
+		<TextField fx:id="txtXPos" layoutX="10.0" layoutY="82.0"
+			prefHeight="26.0" prefWidth="410.0" promptText="x Position" />
+		<TextField fx:id="txtYPos" layoutX="10.0" layoutY="118.0"
+			prefHeight="26.0" prefWidth="410.0" promptText="y Position" />
+		<TextField fx:id="txtClickCount" layoutX="10.0" layoutY="154.0"
+			prefHeight="26.0" prefWidth="106.0" promptText="Click count" />
+		<TextField fx:id="txtDelay" layoutX="125.0" layoutY="154.0"
+			prefHeight="26.0" prefWidth="295.0" promptText="Delay between clicks (sec)" />
+		<ToggleButton fx:id="tglBtn" layoutX="10.0" layoutY="190.0"
+			onAction="#startClicker" prefHeight="26.0" prefWidth="410.0" text="Start Clicking" />
+	</children>
+</AnchorPane>
