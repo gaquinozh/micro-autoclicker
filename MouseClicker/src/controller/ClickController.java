@@ -48,6 +48,8 @@ public class ClickController implements Initializable {
 	private Button btnAddPos;
 	@FXML
 	private Button btnRemPos;
+	@FXML
+	private Button btnAddCurrentPos;
 
 	@FXML
 	private TableView<Position> tblPositions;
@@ -117,8 +119,13 @@ public class ClickController implements Initializable {
 	}
 	
 	public void showActualPosition(MouseEvent e) {
-		txtXPosLbl.setText(String.format("%f", e.getScreenX()));
-		txtYPosLbl.setText(String.format("%f", e.getScreenY()));
+		txtXPosLbl.setText(String.format("%d", (long) e.getScreenX()));
+		txtYPosLbl.setText(String.format("%d", (long) e.getScreenY()));
+	}
+	
+	public void addCurrentPos(ActionEvent e) {
+		data.add(new Position(Integer.parseInt(txtXPosLbl.getText()), Integer
+				.parseInt(txtYPosLbl.getText())));
 	}
 
 }
