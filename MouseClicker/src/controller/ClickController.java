@@ -2,15 +2,12 @@ package controller;
 
 import com.sun.glass.ui.Robot;
 
-import helper.MouseRecorder;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,8 +24,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
-public class ClickController implements Initializable, Observer {
+public class ClickController implements Initializable {
 
 	@FXML
 	private TextField txtXPosLbl;
@@ -117,12 +115,10 @@ public class ClickController implements Initializable, Observer {
 	public void remPos(ActionEvent event) {
 		data.remove(tblPositions.getSelectionModel().getSelectedItem());
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		MouseRecorder mR = (MouseRecorder) o;
-		txtXPosLbl.setPromptText("" + mR.getX());
-		txtYPosLbl.setPromptText("" + mR.getY());
+	
+	public void showActualPosition(MouseEvent e) {
+		txtXPosLbl.setText(String.format("%f", e.getScreenX()));
+		txtYPosLbl.setText(String.format("%f", e.getScreenY()));
 	}
 
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 
-<AnchorPane prefHeight="260.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClickController">
+<AnchorPane onMouseMoved="#showActualPosition" prefHeight="260.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ClickController">
 	<children>
 		<Label layoutX="14.0" layoutY="14.0" text="Current Mouse Position">
 			<font>
