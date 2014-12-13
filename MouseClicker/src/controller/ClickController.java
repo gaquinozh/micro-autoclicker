@@ -132,7 +132,6 @@ public class ClickController implements Initializable, Observer {
 	@Override
 	public void update(Observable o, Object obj) {
 		MouseHooker mh = (MouseHooker) o;
-		System.out.println(mh.getX()+" " + mh.getY());
 		txtXPosLbl.setText(String.format("%d", mh.getX()));
 		txtYPosLbl.setText(String.format("%d", mh.getY()));
 	}
