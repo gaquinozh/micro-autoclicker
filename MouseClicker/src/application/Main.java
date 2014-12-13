@@ -3,7 +3,6 @@ package application;
 import helper.MouseHooker;
 
 import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
 
 import controller.ClickController;
 import javafx.application.Application;
