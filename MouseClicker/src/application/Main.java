@@ -45,8 +45,6 @@ public class Main extends Application {
 			launch(args);
 		} finally {
 			GlobalScreen.unregisterNativeHook();
-			System.runFinalization();
-			System.exit(0);
 		}
 	}
 }

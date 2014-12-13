@@ -27,6 +27,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 
 public class ClickController implements Initializable, Observer {
 
@@ -73,6 +74,26 @@ public class ClickController implements Initializable, Observer {
 	}
 
 	@FXML
+	public void validateBeforeAdd(KeyEvent e) {
+		if (txtXPos.getText().matches("\\d+")
+				&& txtYPos.getText().matches("\\d+")) {
+			btnAddPos.setDisable(false);
+		} else {
+			btnAddPos.setDisable(true);
+		}
+	}
+
+	@FXML
+	public void validateBeforeStart(KeyEvent e) {
+		if (txtDelay.getText().matches("\\d+")
+				&& txtClickCount.getText().matches("\\d+")) {
+			tglBtn.setDisable(false);
+		} else {
+			tglBtn.setDisable(true);
+		}
+	}
+
+	@FXML
 	public void startClicker(ActionEvent event) {
 
 		if (this.tglBtn.isSelected()) {
@@ -116,13 +137,17 @@ public class ClickController implements Initializable, Observer {
 	public void addPos(ActionEvent event) {
 		data.add(new Position(Integer.parseInt(txtXPos.getText()), Integer
 				.parseInt(txtYPos.getText())));
+		txtXPos.clear();
+		txtYPos.clear();
+		btnAddPos.setDisable(true);
+		txtXPos.requestFocus();
 	}
 
 	@FXML
 	public void remPos(ActionEvent event) {
 		data.remove(tblPositions.getSelectionModel().getSelectedItem());
 	}
-	
+
 	@FXML
 	public void addCurrentPos(ActionEvent e) {
 		data.add(new Position(Integer.parseInt(txtXPosLbl.getText()), Integer
