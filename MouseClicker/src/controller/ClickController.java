@@ -2,12 +2,15 @@ package controller;
 
 import com.sun.glass.ui.Robot;
 
+import helper.MouseHooker;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,9 +27,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
-public class ClickController implements Initializable {
+public class ClickController implements Initializable, Observer {
 
 	@FXML
 	private TextField txtXPosLbl;
@@ -122,15 +124,17 @@ public class ClickController implements Initializable {
 	}
 	
 	@FXML
-	public void showActualPosition(MouseEvent e) {
-		txtXPosLbl.setText(String.format("%d", (long) e.getScreenX()));
-		txtYPosLbl.setText(String.format("%d", (long) e.getScreenY()));
-	}
-	
-	@FXML
 	public void addCurrentPos(ActionEvent e) {
 		data.add(new Position(Integer.parseInt(txtXPosLbl.getText()), Integer
 				.parseInt(txtYPosLbl.getText())));
+	}
+
+	@Override
+	public void update(Observable o, Object obj) {
+		MouseHooker mh = (MouseHooker) o;
+		System.out.println(mh.getX()+" " + mh.getY());
+		txtXPosLbl.setText(String.format("%d", mh.getX()));
+		txtYPosLbl.setText(String.format("%d", mh.getY()));
 	}
 
 }
