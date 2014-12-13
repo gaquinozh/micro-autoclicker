@@ -31,7 +31,7 @@
 			prefHeight="26.0" prefWidth="410.0" promptText="x Position" />
 		<TextField fx:id="txtYPos" layoutX="10.0" layoutY="158.0"
 			prefHeight="26.0" prefWidth="410.0" promptText="y Position" />
-		<Button fx:id="addPos" layoutX="10.0" layoutY="192.0"
+		<Button fx:id="btnAddPos" layoutX="10.0" layoutY="192.0"
 			mnemonicParsing="false" onAction="#addPos" prefHeight="26.0"
 			prefWidth="410.0" text="Add Position" />
 		<TextField fx:id="txtClickCount" layoutX="10.0" layoutY="228.0"
@@ -49,7 +49,7 @@
 					text="Y Position" />
 			</columns>
 		</TableView>
-		<Button fx:id="remPos" layoutX="430.0" layoutY="264.0"
+		<Button fx:id="btnRemPos" layoutX="430.0" layoutY="264.0"
 			mnemonicParsing="false" onAction="#remPos" prefHeight="26.0"
 			prefWidth="240.0" text="Remove Position" />
 	</children>

@@ -70,6 +70,7 @@ public class ClickController implements Initializable {
 		tblPositions.setItems(data);
 	}
 
+	@FXML
 	public void startClicker(ActionEvent event) {
 
 		if (this.tglBtn.isSelected()) {
@@ -109,20 +110,24 @@ public class ClickController implements Initializable {
 		tglBtn.setText("Start Clicking!");
 	}
 
+	@FXML
 	public void addPos(ActionEvent event) {
 		data.add(new Position(Integer.parseInt(txtXPos.getText()), Integer
 				.parseInt(txtYPos.getText())));
 	}
 
+	@FXML
 	public void remPos(ActionEvent event) {
 		data.remove(tblPositions.getSelectionModel().getSelectedItem());
 	}
 	
+	@FXML
 	public void showActualPosition(MouseEvent e) {
 		txtXPosLbl.setText(String.format("%d", (long) e.getScreenX()));
 		txtYPosLbl.setText(String.format("%d", (long) e.getScreenY()));
 	}
 	
+	@FXML
 	public void addCurrentPos(ActionEvent e) {
 		data.add(new Position(Integer.parseInt(txtXPosLbl.getText()), Integer
 				.parseInt(txtYPosLbl.getText())));
