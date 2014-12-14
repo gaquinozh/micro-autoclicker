@@ -2,6 +2,7 @@ package controller;
 
 import com.sun.glass.ui.Robot;
 
+import helper.FormValidation;
 import helper.MouseHooker;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -75,12 +76,11 @@ public class ClickController implements Initializable, Observer {
 
 	@FXML
 	public void validateBeforeAdd(KeyEvent e) {
-		if (txtXPos.getText().matches("\\d+")
-				&& txtYPos.getText().matches("\\d+")) {
+		if(FormValidation.validateAddPosFields(txtXPos, txtYPos))
 			btnAddPos.setDisable(false);
-		} else {
+		else
 			btnAddPos.setDisable(true);
-		}
+		
 	}
 
 	@FXML
