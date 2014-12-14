@@ -22,13 +22,22 @@
 		<Label layoutX="230.0" layoutY="44.0" text="y Position:" />
 		<TextField fx:id="txtYPosLbl" disable="true" editable="false" layoutX="305.0" layoutY="39.0" prefHeight="26.0" prefWidth="115.0" />
 		<Button fx:id="btnAddCurrentPos" layoutX="10.0" layoutY="74.0" onAction="#addCurrentPos" prefHeight="26.0" prefWidth="410.0" text="_Add Current Position" />
-		<TextField fx:id="txtXPos" layoutX="10.0" layoutY="122.0" onKeyReleased="#validateBeforeAdd" prefHeight="26.0" prefWidth="410.0" promptText="x Position" />
-		<TextField fx:id="txtYPos" layoutX="10.0" layoutY="158.0" onKeyReleased="#validateBeforeAdd" prefHeight="26.0" prefWidth="410.0" promptText="y Position" />
+		<TextField fx:id="txtXPos" layoutX="10.0" layoutY="122.0" onKeyReleased="#validateBeforeAdd" prefHeight="26.0" prefWidth="410.0" promptText="x Position">
+         <tooltip>
+            <Tooltip text="X &amp; Y postion have to be in the range allowed by your screen." />
+         </tooltip></TextField>
+		<TextField fx:id="txtYPos" layoutX="10.0" layoutY="158.0" onKeyReleased="#validateBeforeAdd" prefHeight="26.0" prefWidth="410.0" promptText="y Position">
+         <tooltip>
+            <Tooltip fx:id="toolTipAddPosition" text="X &amp; Y postion have to be in the range allowed by your screen." />
+         </tooltip></TextField>
 		<Button fx:id="btnAddPos" disable="true" layoutX="10.0" layoutY="192.0" mnemonicParsing="false" onAction="#addPos" prefHeight="26.0" prefWidth="410.0" text="Add Position" />
-		<TextField fx:id="txtClickCount" layoutX="10.0" layoutY="228.0" onKeyReleased="#validateBeforeStart" prefHeight="26.0" prefWidth="121.0" promptText="Amount of clicks" />
+		<TextField fx:id="txtClickCount" layoutX="10.0" layoutY="228.0" onKeyReleased="#validateBeforeStart" prefHeight="26.0" prefWidth="121.0" promptText="Amount of clicks">
+         <tooltip>
+            <Tooltip fx:id="toolTipAmountOfClicks" text="Amount of clicks has to be between 1 and 100." wrapText="true" />
+         </tooltip></TextField>
 		<TextField fx:id="txtDelay" layoutX="141.0" layoutY="228.0" onKeyReleased="#validateBeforeStart" prefHeight="26.0" prefWidth="279.0" promptText="Delay between repetitions in seconds">
          <tooltip>
-            <Tooltip text="Minimun delay between loops. Recommended is a value of 10 seconds or above." textOverrun="WORD_ELLIPSIS" />
+            <Tooltip fx:id="toolTipDelay" text="For saving your system, the minimum delay has to be 15 seconds or higher." textOverrun="WORD_ELLIPSIS" wrapText="true" />
          </tooltip></TextField>
 		<ToggleButton fx:id="tglBtn" disable="true" layoutX="10.0" layoutY="264.0" onAction="#startClicker" prefHeight="26.0" prefWidth="410.0" text="Start Clicking" />
 		<TableView fx:id="tblPositions" layoutX="430.0" layoutY="9.0" prefHeight="245.0" prefWidth="240.0">

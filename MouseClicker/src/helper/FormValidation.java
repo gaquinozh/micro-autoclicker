@@ -5,11 +5,21 @@ import javafx.stage.Screen;
 
 public class FormValidation {
 
-	public static boolean validateAddPosFields(TextField x, TextField y) {
-		return validate("x", x) && validate("y", y);
+	public static boolean validateStart(TextField clickCount, TextField delay) {
+		boolean clickCountCriteria = clickCount.getText().matches("\\d+")
+				&& Integer.parseInt(clickCount.getText()) >= 1
+				&& Integer.parseInt(clickCount.getText()) <= 100;
+		boolean delayCreteria = delay.getText().matches("\\d+")
+				&& Integer.parseInt(delay.getText()) >= 15;
+		return clickCountCriteria && delayCreteria;
 	}
 
-	private static boolean validate(String identifier, TextField txt) {
+	public static boolean validateAddPosFields(TextField x, TextField y) {
+		return validateSinglePosField("x", x) && validateSinglePosField("y", y);
+	}
+
+	private static boolean validateSinglePosField(String identifier,
+			TextField txt) {
 		long maxValue = 0;
 		switch (identifier) {
 		case "x":
@@ -19,7 +29,8 @@ public class FormValidation {
 			maxValue = (long) Screen.getPrimary().getBounds().getMaxY();
 			break;
 		}
-		return txt.getText().matches("\\d+") && Long.parseLong(txt.getText()) <= maxValue;
+		return txt.getText().matches("\\d+")
+				&& Long.parseLong(txt.getText()) <= maxValue;
 	}
 
 }

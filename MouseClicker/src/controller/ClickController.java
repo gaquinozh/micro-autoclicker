@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 
 import java.net.URL;
 import java.util.Observable;
@@ -61,6 +62,13 @@ public class ClickController implements Initializable, Observer {
 	private TableColumn<Position, Integer> x;
 	@FXML
 	private TableColumn<Position, Integer> y;
+	
+	@FXML
+	private Tooltip toolTipAmountOfClicks;
+	@FXML
+	private Tooltip toolTipDelay;
+	@FXML
+	private Tooltip toolTipAddPosition;
 
 	ObservableList<Position> data = FXCollections.observableArrayList();
 
@@ -80,17 +88,14 @@ public class ClickController implements Initializable, Observer {
 			btnAddPos.setDisable(false);
 		else
 			btnAddPos.setDisable(true);
-		
 	}
 
 	@FXML
 	public void validateBeforeStart(KeyEvent e) {
-		if (txtDelay.getText().matches("\\d+")
-				&& txtClickCount.getText().matches("\\d+")) {
+		if (FormValidation.validateStart(txtClickCount, txtDelay))
 			tglBtn.setDisable(false);
-		} else {
+		else
 			tglBtn.setDisable(true);
-		}
 	}
 
 	@FXML
