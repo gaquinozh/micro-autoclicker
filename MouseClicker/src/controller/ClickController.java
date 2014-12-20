@@ -103,6 +103,7 @@ public class ClickController implements Initializable, Observer {
 
 		if (this.tglBtn.isSelected()) {
 			tglBtn.setText("Stop Clicking!");
+			setDisabledAll(true);
 			timer = new Timer();
 			timer.scheduleAtFixedRate(new TimerTask() {
 				@Override
@@ -135,7 +136,23 @@ public class ClickController implements Initializable, Observer {
 	public void emergencyStop() {
 		timer.cancel();
 		timer.purge();
-		tglBtn.setText("Start Clicking!");
+		setDisabledAll(false);
+		if(FormValidation.validateAddPosFields(txtXPos, txtYPos))
+			btnAddPos.setDisable(false);
+		else
+			btnAddPos.setDisable(true);
+		
+	}
+
+	private void setDisabledAll(boolean disabled) {
+		txtClickCount.setDisable(disabled);
+		txtXPos.setDisable(disabled);
+		txtYPos.setDisable(disabled);
+		txtClickCount.setDisable(disabled);
+		txtDelay.setDisable(disabled);
+		btnAddCurrentPos.setDisable(disabled);
+		btnAddPos.setDisable(disabled);
+		btnRemPos.setDisable(disabled);
 	}
 
 	@FXML
