@@ -62,7 +62,7 @@ public class ClickController implements Initializable, Observer {
 	private TableColumn<Position, Integer> x;
 	@FXML
 	private TableColumn<Position, Integer> y;
-	
+
 	@FXML
 	private Tooltip toolTipAmountOfClicks;
 	@FXML
@@ -84,7 +84,7 @@ public class ClickController implements Initializable, Observer {
 
 	@FXML
 	public void validateBeforeAdd(KeyEvent e) {
-		if(FormValidation.validateAddPosFields(txtXPos, txtYPos))
+		if (FormValidation.validateAddPosFields(txtXPos, txtYPos))
 			btnAddPos.setDisable(false);
 		else
 			btnAddPos.setDisable(true);
@@ -114,6 +114,9 @@ public class ClickController implements Initializable, Observer {
 							for (Position p : data) {
 								robot.mouseMove(p.getX(), p.getY());
 								try {
+									// TODO: Big Issue! Robot seems to run only
+									// on event thread. Search for better
+									// solution
 									Thread.sleep(1000);
 								} catch (InterruptedException e) {
 									e.printStackTrace();
@@ -138,11 +141,11 @@ public class ClickController implements Initializable, Observer {
 		timer.purge();
 		tglBtn.setText("Start Clicking");
 		setDisabledAll(false);
-		if(FormValidation.validateAddPosFields(txtXPos, txtYPos))
+		if (FormValidation.validateAddPosFields(txtXPos, txtYPos))
 			btnAddPos.setDisable(false);
 		else
 			btnAddPos.setDisable(true);
-		
+
 	}
 
 	private void setDisabledAll(boolean disabled) {
